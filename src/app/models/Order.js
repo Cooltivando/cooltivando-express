@@ -11,6 +11,10 @@ class Order extends Model {
       }
     );
   }
+
+  static associate(models) {
+    this.belongsTo(models.File, { foreignKey: 'file_id' });
+  }
 }
 
 export default Order;
