@@ -15,6 +15,8 @@ const upload = multer(multerConfig);
 
 routes.post('/sessions', SessionController.store);
 
+routes.get('/cooperatives', CooperativeController.index);
+
 routes.use(authMiddleware);
 
 routes.post('/clients', ClientController.store);
@@ -23,6 +25,7 @@ routes.put('/clients', ClientController.update);
 routes.post('/cooperatives', CooperativeController.store);
 routes.put('/cooperatives', CooperativeController.update);
 
+routes.get('/orders', OrderController.index);
 routes.post('/orders', OrderController.store);
 routes.put('/orders', OrderController.update);
 
