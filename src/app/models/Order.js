@@ -13,7 +13,10 @@ class Order extends Model {
   }
 
   static associate(models) {
-    this.belongsTo(models.File, { foreignKey: 'file_id' });
+    this.belongsTo(models.File, {
+      foreignKey: 'file_id',
+      as: 'attached_order',
+    });
   }
 }
 
