@@ -1,6 +1,7 @@
 import * as Yup from 'yup';
 
 import Order from '../models/Order';
+import File from '../models/File';
 
 class OrderController {
   async store(req, res) {
@@ -24,6 +25,21 @@ class OrderController {
 
   async update(req, res) {
     return res.json();
+  }
+
+  async index(req, res) {
+    const orders = await Order.findAll({
+      attributes: ['id', 'message'],
+      include: [
+        {
+          model: File,
+          as: 'attached_order',
+          attributes: ['id', 'name', 'path', 'url'],
+        },
+      ],
+    });
+
+    return res.json(orders);
   }
 }
 
