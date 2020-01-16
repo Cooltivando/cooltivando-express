@@ -82,6 +82,14 @@ class CooperativeController {
       phone,
     });
   }
+
+  async index(req, res) {
+    const cooperatives = await Cooperative.findAll({
+      attributes: ['id', 'name'],
+    });
+
+    return res.json(cooperatives);
+  }
 }
 
 export default new CooperativeController();
